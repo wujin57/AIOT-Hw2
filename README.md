@@ -12,6 +12,18 @@
 
 交接文件中的本機絕對路徑是執行紀錄；在 GitHub 請使用上方相對連結。若 ChatGPT 無法直接讀取儲存庫，請上傳上述交接文件、摘要與 CSV。
 
+## Stage 4：只驗證已發表結果
+
+不需重新訓練。從任意工作目錄執行 `<repo>/validate_outputs.py`，預設會使用該程式所在儲存庫的 `data/kc_house_data.csv` 與 `outputs_verified/`。也可指定 `--data /path/to/kc_house_data.csv`；顯式指定的相對路徑以目前工作目錄為準。驗證器先核對 `research_configuration.json` 的 SHA256，再檢查保存的模型預測。原始 `dataset_path` 保留作為歷史執行來源紀錄，不再作為資料讀取的依賴。
+
+```bash
+.venv/bin/python validate_outputs.py
+.venv/bin/python validate_outputs.py --data /path/to/kc_house_data.csv
+.venv/bin/python -m pytest tests -q
+```
+
+搬移目錄、顯式資料路徑、錯誤 checksum 拒絕測試與本次實際驗證紀錄位於 `verification/stage4/`。下方主程式指令僅供完整重現；本次修正沒有重跑訓練或覆寫數值產物。
+
 ## 執行
 
 建議 Python 3.9–3.12；本次實際環境與精確版本見 `requirements-lock.txt` 及輸出 JSON。
@@ -76,6 +88,11 @@ prediction = model.predict(data[FEATURES].iloc[:5])
 僅載入可信來源的 joblib 檔案。
 
 ## 解讀限制與繳交
+
+- **預測準確度**：M0 的外層 CV 平均 RMSE 最低（165,873.34 USD）；M3 為 166,319.69 USD，且在全部五個外層折中 RMSE 都高於 M0。不能宣稱 RFE 提高了此次預測準確度。
+- **模型複雜度**：M3 因預先指定的 one-standard-error 複雜度規則而被選中。86 → 60 欄的 30.23% 減少指的是編碼後模型欄位，並非原始 18 個特徵減少 30.23%。Pearson、MI、RFE 的搜尋網格皆僅為 `[5, 10, 20, 40, 60]`，沒有評估 60 欄以上的這三種篩選配置，不能據此推論全域最佳欄數。
+- **係數可識別性**：M3 含截距的設計矩陣共有 61 欄、秩為 60。OLS 個別係數可能不是唯一解，不宜把係數大小當作唯一可解釋的特徵重要性或因果效果。截距是標準化特徵座標下的基準預測，須與特徵係數分開解釋。
+- **區間涵蓋率**：整體 Test 涵蓋率約 94.36%，最高預測價格組僅約 79.56%。基本 split conformal 在適當 exchangeability 假設下提供邊際涵蓋性質，不保證每個房價群組的條件涵蓋率。依房屋分組切分不等於已證明交易層級 exchangeability。
 
 調整後 R² 使用含截距設計矩陣秩減一，Test/validation 版本僅描述性使用。BP 採完整設計欄空間的正交基底處理 rank deficiency，使用有效秩作自由度。殘差診斷是選模後描述性結果，不證明假設成立。
 

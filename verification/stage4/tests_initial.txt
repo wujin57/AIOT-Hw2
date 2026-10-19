@@ -1,0 +1,130 @@
+.............FF.                                                         [100%]
+=================================== FAILURES ===================================
+_________________ test_relocated_validator[repository-default] _________________
+
+tmp_path = PosixPath('/private/var/folders/4r/7gl9hvdn3vd3t4_b6735qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_repos0')
+explicit_data = False
+
+    @pytest.mark.parametrize('explicit_data', [False, True], ids=['repository-default', 'explicit-data'])
+    def test_relocated_validator(tmp_path, explicit_data):
+        moved = tmp_path/'relocated repository'
+        moved.mkdir()
+        for name in ['validate_outputs.py', 'experiment.py']:
+            shutil.copy2(ROOT/name, moved/name)
+        for name in ['data', 'outputs_verified']:
+            shutil.copytree(ROOT/name, moved/name)
+        config = moved/'outputs_verified/research_configuration.json'
+        provenance_before = config.read_bytes()
+        original_path = json.loads(provenance_before)['dataset_path']
+        args = [str(moved/'validate_outputs.py')]
+        if explicit_data:
+            alternate = tmp_path/'custom input.csv'
+            (moved/'data/kc_house_data.csv').rename(alternate)
+            args += ['--data', str(alternate)]
+        before = hashes(moved/'outputs_verified')
+        # Fail if the validator attempts to read the historical absolute dataset path,
+        # even though that path happens to exist on the developer's machine.
+        bootstrap = '''import pathlib, runpy, sys
+    import pandas as pd
+    original = sys.argv.pop(1)
+    script = sys.argv[1]
+    sys.path.insert(0, str(pathlib.Path(script).parent))
+    read_csv = pd.read_csv
+    def guarded_read(path, *args, **kwargs):
+        assert str(pathlib.Path(path).resolve()) != original, 'Historical dataset path accessed'
+        return read_csv(path, *args, **kwargs)
+    pd.read_csv = guarded_read
+    runpy.run_path(script, run_name='__main__')
+    '''
+        env = dict(os.environ, OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1',
+                   PYTHONDONTWRITEBYTECODE='1')
+        completed = subprocess.run([sys.executable, '-c', bootstrap, original_path, *args],
+                                   cwd=tmp_path, env=env, capture_output=True, text=True, timeout=120)
+>       assert completed.returncode == 0, completed.stdout + completed.stderr
+E       AssertionError: usage: validate_outputs.py [-h] [--output OUTPUT] [--data DATA]
+E         validate_outputs.py: error: unrecognized arguments: /private/var/folders/4r/7gl9hvdn3vd3t4_b6735qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_repos0/relocated repository/validate_outputs.py
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/wujinsong/Desktop/AiOt/hw2/.venv/bin/python', '-c', "import pathlib, runpy, sys\nimport...5qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_repos0/relocated repository/validate_outputs.py\n').returncode
+
+tests/test_validation_portability.py:57: AssertionError
+___________________ test_relocated_validator[explicit-data] ____________________
+
+tmp_path = PosixPath('/private/var/folders/4r/7gl9hvdn3vd3t4_b6735qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_expli0')
+explicit_data = True
+
+    @pytest.mark.parametrize('explicit_data', [False, True], ids=['repository-default', 'explicit-data'])
+    def test_relocated_validator(tmp_path, explicit_data):
+        moved = tmp_path/'relocated repository'
+        moved.mkdir()
+        for name in ['validate_outputs.py', 'experiment.py']:
+            shutil.copy2(ROOT/name, moved/name)
+        for name in ['data', 'outputs_verified']:
+            shutil.copytree(ROOT/name, moved/name)
+        config = moved/'outputs_verified/research_configuration.json'
+        provenance_before = config.read_bytes()
+        original_path = json.loads(provenance_before)['dataset_path']
+        args = [str(moved/'validate_outputs.py')]
+        if explicit_data:
+            alternate = tmp_path/'custom input.csv'
+            (moved/'data/kc_house_data.csv').rename(alternate)
+            args += ['--data', str(alternate)]
+        before = hashes(moved/'outputs_verified')
+        # Fail if the validator attempts to read the historical absolute dataset path,
+        # even though that path happens to exist on the developer's machine.
+        bootstrap = '''import pathlib, runpy, sys
+    import pandas as pd
+    original = sys.argv.pop(1)
+    script = sys.argv[1]
+    sys.path.insert(0, str(pathlib.Path(script).parent))
+    read_csv = pd.read_csv
+    def guarded_read(path, *args, **kwargs):
+        assert str(pathlib.Path(path).resolve()) != original, 'Historical dataset path accessed'
+        return read_csv(path, *args, **kwargs)
+    pd.read_csv = guarded_read
+    runpy.run_path(script, run_name='__main__')
+    '''
+        env = dict(os.environ, OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1',
+                   PYTHONDONTWRITEBYTECODE='1')
+        completed = subprocess.run([sys.executable, '-c', bootstrap, original_path, *args],
+                                   cwd=tmp_path, env=env, capture_output=True, text=True, timeout=120)
+>       assert completed.returncode == 0, completed.stdout + completed.stderr
+E       AssertionError: usage: validate_outputs.py [-h] [--output OUTPUT] [--data DATA]
+E         validate_outputs.py: error: unrecognized arguments: /private/var/folders/4r/7gl9hvdn3vd3t4_b6735qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_expli0/relocated repository/validate_outputs.py
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/wujinsong/Desktop/AiOt/hw2/.venv/bin/python', '-c', "import pathlib, runpy, sys\nimport...5qhk00000gn/T/pytest-of-wujinsong/pytest-0/test_relocated_validator_expli0/relocated repository/validate_outputs.py\n').returncode
+
+tests/test_validation_portability.py:57: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64
+  /Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85
+  /Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89
+  /Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+.venv/lib/python3.9/site-packages/matplotlib/_mathtext.py:45
+  /Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_validation_portability.py::test_relocated_validator[repository-default]
+FAILED tests/test_validation_portability.py::test_relocated_validator[explicit-data]
+2 failed, 14 passed, 14 warnings in 3.87s

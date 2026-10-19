@@ -1,5 +1,6 @@
 """Independent checks of saved real-experiment artifacts (does not retune models)."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import joblib
@@ -8,7 +9,20 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from experiment import FEATURES, metrics, conformal
 
-def validate(root):
+REPOSITORY_ROOT = Path(__file__).resolve().parent
+
+
+def validate(root, data_path=None):
+    root = Path(root)
+    data_path = Path(data_path) if data_path is not None else REPOSITORY_ROOT/'data/kc_house_data.csv'
+    cfg = json.loads((root/'research_configuration.json').read_text())
+    actual_sha256 = hashlib.sha256(data_path.read_bytes()).hexdigest()
+    expected_sha256 = cfg['dataset_sha256']
+    if actual_sha256 != expected_sha256:
+        raise ValueError(f'Dataset SHA256 mismatch for {data_path}: expected {expected_sha256}, got {actual_sha256}')
+    print(f'PASS: dataset SHA256 {actual_sha256}')
+    # cfg['dataset_path'] remains historical provenance, never a path dependency.
+    data = pd.read_csv(data_path)
     t=root/'tables'; read=lambda name:pd.read_csv(t/(name+'.csv'))
     summary=json.loads((root/'experiment_summary.json').read_text()); assert summary['status']=='completed'
     partitions=read('partition_assignments'); assert len(partitions)==21613 and partitions.row_index.nunique()==21613
@@ -51,7 +65,6 @@ def validate(root):
     np.testing.assert_allclose(flags.mean(),im.empirical_coverage); np.testing.assert_allclose((pi.upper-pi.lower).mean(),im.average_width)
     assert flags.sum()==im.covered and len(pi)==im.test_n
     by=read('interval_coverage_by_price'); assert by.observations.sum()==len(pi) and by.covered.sum()==flags.sum()
-    cfg=json.loads((root/'research_configuration.json').read_text()); data=pd.read_csv(cfg['dataset_path'])
     winner=joblib.load(root/'models'/'final_model.joblib')
     np.testing.assert_allclose(winner.predict(data.loc[pi.row_index,FEATURES]),pi.prediction)
     np.testing.assert_allclose(winner.predict(data.loc[cal.row_index,FEATURES]),cal.prediction)
@@ -74,4 +87,9 @@ def validate(root):
     print('Winner:',summary['selection']['selected_method'])
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--output',type=Path,default=Path(__file__).parent/'outputs_verified'); args=p.parse_args(); validate(args.output)
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--output',type=Path,default=REPOSITORY_ROOT/'outputs_verified')
+    p.add_argument('--data',type=Path,default=REPOSITORY_ROOT/'data/kc_house_data.csv',
+                   help='CSV to verify against the recorded SHA256; default: repository data/kc_house_data.csv. Explicit relative paths use the current working directory.')
+    args=p.parse_args()
+    validate(args.output,args.data)

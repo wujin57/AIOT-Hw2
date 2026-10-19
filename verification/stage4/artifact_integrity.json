@@ -1,0 +1,425 @@
+{
+  "baseline_commit": "4139b533531dcc13f54f242225ea2007133c56a2",
+  "checked_files": 69,
+  "byte_identical_files": 68,
+  "changed_files": [
+    "outputs_verified/handoff.md"
+  ],
+  "reason": "Documentation-only interpretive clarification and Stage 4 change record",
+  "files": [
+    {
+      "path": "outputs_verified/model_selection.json",
+      "before_sha256": "af28d5f8c04c9c2c0a64404b28d70a2e08d1b56c70aede51e247d1215b850a6b",
+      "after_sha256": "af28d5f8c04c9c2c0a64404b28d70a2e08d1b56c70aede51e247d1215b850a6b",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/calibration.json",
+      "before_sha256": "485064f420bed607dd3a52b18f76c67b237f87b60bdc83cd7e73cdcdfbc2dc63",
+      "after_sha256": "485064f420bed607dd3a52b18f76c67b237f87b60bdc83cd7e73cdcdfbc2dc63",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/run.log",
+      "before_sha256": "e9b25175d849d074240a706e1685f1afaeb21851d18164541ccd47b1f3a19e5e",
+      "after_sha256": "e9b25175d849d074240a706e1685f1afaeb21851d18164541ccd47b1f3a19e5e",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/engineering_test_results.txt",
+      "before_sha256": "5be5dfdbb6d3e74ebd8e1fdee6880e78a0d265b9203c24a9aa0b42d8778a9d1c",
+      "after_sha256": "5be5dfdbb6d3e74ebd8e1fdee6880e78a0d265b9203c24a9aa0b42d8778a9d1c",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/research_configuration.json",
+      "before_sha256": "1b048b476ca771c8850dc695c5818ef08088fbb78bd087d4feac7248cc1b92e6",
+      "after_sha256": "1b048b476ca771c8850dc695c5818ef08088fbb78bd087d4feac7248cc1b92e6",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/fold_audit.json",
+      "before_sha256": "85003de7676246c9e455be95c1be6929096c226c8896a76ad8656bd557f9b675",
+      "after_sha256": "85003de7676246c9e455be95c1be6929096c226c8896a76ad8656bd557f9b675",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/engineering_notes.md",
+      "before_sha256": "e513611c4b2c58a0a3b5274a9ec53693c995320f5286c1d91d1ff7efcfdcb87d",
+      "after_sha256": "e513611c4b2c58a0a3b5274a9ec53693c995320f5286c1d91d1ff7efcfdcb87d",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/validation_results.txt",
+      "before_sha256": "6fb7c05eec193948e1dd28a85830b429b926568db7de39648e5574debdc1d43a",
+      "after_sha256": "6fb7c05eec193948e1dd28a85830b429b926568db7de39648e5574debdc1d43a",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/environment.json",
+      "before_sha256": "98632523f93b51b4c27883d7587e84ed75f04be1e2c422a86d518c31602bda42",
+      "after_sha256": "98632523f93b51b4c27883d7587e84ed75f04be1e2c422a86d518c31602bda42",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/handoff.md",
+      "before_sha256": "46810a840c122e2551a7b9bd38ea9bad01458d0df26b0f3fc6a60afef168b546",
+      "after_sha256": "b398262dccceb602c96eb4eff49daf26b027c00e6c3b6817ec399c0a48891056",
+      "unchanged": false
+    },
+    {
+      "path": "outputs_verified/experiment_summary.json",
+      "before_sha256": "483b728e6eabbeb7b0e082fbe4a58092211c0b6699370a2cd4420ba304af9b3d",
+      "after_sha256": "483b728e6eabbeb7b0e082fbe4a58092211c0b6699370a2cd4420ba304af9b3d",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/rfecv_curve.csv",
+      "before_sha256": "36f6cdfaa8065a1d01ad622ccab147143b2bc2ada5f2ad95cfa780bff0d91878",
+      "after_sha256": "36f6cdfaa8065a1d01ad622ccab147143b2bc2ada5f2ad95cfa780bff0d91878",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/unusual_values.csv",
+      "before_sha256": "d552dccbedb91ed7b9439f901a81abca6618e9c07c53b76da0750e0e76556ffc",
+      "after_sha256": "d552dccbedb91ed7b9439f901a81abca6618e9c07c53b76da0750e0e76556ffc",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/test_model_metrics.csv",
+      "before_sha256": "d21c3df67db794078aa52495d85f01feac752ae638755d6411ac2cbcfd3db03b",
+      "after_sha256": "d21c3df67db794078aa52495d85f01feac752ae638755d6411ac2cbcfd3db03b",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/vif.csv",
+      "before_sha256": "057075fa0e8309a148e10e6806bbd33196df6025f61060e0ef21724dd96b8ac6",
+      "after_sha256": "057075fa0e8309a148e10e6806bbd33196df6025f61060e0ef21724dd96b8ac6",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/selected_features.csv",
+      "before_sha256": "3a1fa7813591ecd9aca43aec8565e1dfec25f326813467ee7ebac39ab9a68b93",
+      "after_sha256": "3a1fa7813591ecd9aca43aec8565e1dfec25f326813467ee7ebac39ab9a68b93",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/column_quality.csv",
+      "before_sha256": "55ae9edad12dc48d95a3883bbd5b61c8ee6ae8ac85fdfdca5869cab36268f82c",
+      "after_sha256": "55ae9edad12dc48d95a3883bbd5b61c8ee6ae8ac85fdfdca5869cab36268f82c",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/data_split_summary.csv",
+      "before_sha256": "1ed0b1963912d89fd0dd40b020bbe3db0d657eae4d983f5292ec78e90713b581",
+      "after_sha256": "1ed0b1963912d89fd0dd40b020bbe3db0d657eae4d983f5292ec78e90713b581",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/model_hyperparameters.csv",
+      "before_sha256": "a01ec2e6c473f906825af2b2e50f8fbc4169058c1980ef9477e9325fcf50e5e9",
+      "after_sha256": "a01ec2e6c473f906825af2b2e50f8fbc4169058c1980ef9477e9325fcf50e5e9",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/development_price_correlations.csv",
+      "before_sha256": "69d9d4b6556ff5a3a0d1afcd43142bfd2a21f9c75b1b21b28e7cbdbe3f583ddd",
+      "after_sha256": "69d9d4b6556ff5a3a0d1afcd43142bfd2a21f9c75b1b21b28e7cbdbe3f583ddd",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/development_residuals.csv",
+      "before_sha256": "cbe87703941de1ea40776c32f5fd3b2bd74404829eb6d863573824c42f350935",
+      "after_sha256": "cbe87703941de1ea40776c32f5fd3b2bd74404829eb6d863573824c42f350935",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/development_model_metrics.csv",
+      "before_sha256": "083db84172e4206bcc052c840ed84e6133b7e30bacd26c576ea87b3a3c1e00d6",
+      "after_sha256": "083db84172e4206bcc052c840ed84e6133b7e30bacd26c576ea87b3a3c1e00d6",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/development_feature_correlations.csv",
+      "before_sha256": "116bda5378560c6da638ccfb7a3b449f9a08a06009b9e30fdbeed13bce226602",
+      "after_sha256": "116bda5378560c6da638ccfb7a3b449f9a08a06009b9e30fdbeed13bce226602",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/prediction_intervals_test.csv",
+      "before_sha256": "65302f9bfbef1d6c4a89217dec8d249591ad3f324bc701a74d000bb03b237672",
+      "after_sha256": "65302f9bfbef1d6c4a89217dec8d249591ad3f324bc701a74d000bb03b237672",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/interval_metrics.csv",
+      "before_sha256": "28f5ba761832ab33c778ba891b49631f6de663fc1e93e4312c9336bebac9f6d0",
+      "after_sha256": "28f5ba761832ab33c778ba891b49631f6de663fc1e93e4312c9336bebac9f6d0",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/model_coefficients.csv",
+      "before_sha256": "c97620749fd63d434f0843d8e1aaa4b1971f16d7f276e03ea149f0d91a4e2e6b",
+      "after_sha256": "c97620749fd63d434f0843d8e1aaa4b1971f16d7f276e03ea149f0d91a4e2e6b",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/calibration_scores.csv",
+      "before_sha256": "b6bfa65eef0bbd25dce09eb98784e1971c6c47958844830791aa48ab27836662",
+      "after_sha256": "b6bfa65eef0bbd25dce09eb98784e1971c6c47958844830791aa48ab27836662",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/prediction_interval_plot_data.csv",
+      "before_sha256": "62029b4065475a3ae1c1da25ece4474891aafc66f9c4628a55b9dbc74339d7a1",
+      "after_sha256": "62029b4065475a3ae1c1da25ece4474891aafc66f9c4628a55b9dbc74339d7a1",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/statistical_diagnostics.csv",
+      "before_sha256": "e05dae3dfbfd124acb3f1c2d5352bb9604c178d357ca7dbd52045eca7130ddb9",
+      "after_sha256": "e05dae3dfbfd124acb3f1c2d5352bb9604c178d357ca7dbd52045eca7130ddb9",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/test_predictions.csv",
+      "before_sha256": "13f4021f391054705ded565b61be1962de5d5462cc585656f6ee1691f940de42",
+      "after_sha256": "13f4021f391054705ded565b61be1962de5d5462cc585656f6ee1691f940de42",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/extreme_errors_development.csv",
+      "before_sha256": "ba253724d2b87938775085c93ddea058fcaa784e8af8d4e41ea174419aed1fc5",
+      "after_sha256": "ba253724d2b87938775085c93ddea058fcaa784e8af8d4e41ea174419aed1fc5",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/pooled_oof_metrics.csv",
+      "before_sha256": "a3a83c5ccd30a8481d8fbcc3f779284980b47fed6075219e1baee6da97470308",
+      "after_sha256": "a3a83c5ccd30a8481d8fbcc3f779284980b47fed6075219e1baee6da97470308",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/high_correlation_pairs.csv",
+      "before_sha256": "94cbc751029628a3711ac26a631d8b93ea1768b5741a779434648b2c48464eb1",
+      "after_sha256": "94cbc751029628a3711ac26a631d8b93ea1768b5741a779434648b2c48464eb1",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/data_quality_summary.csv",
+      "before_sha256": "59be5519d63ecf1160a5e825b16602776b9db664485cdd35f5b2a82a90dd9405",
+      "after_sha256": "59be5519d63ecf1160a5e825b16602776b9db664485cdd35f5b2a82a90dd9405",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/cv_summary.csv",
+      "before_sha256": "0d6d423c07e91508b4c6b7ad74cf41d55b4eb856dce05979bd3c15d5062e34ac",
+      "after_sha256": "0d6d423c07e91508b4c6b7ad74cf41d55b4eb856dce05979bd3c15d5062e34ac",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/cv_fold_metrics.csv",
+      "before_sha256": "def080df0fd3053512809d1decbcb4ac3378a4e9a9d3b557e0750319878dc7bd",
+      "after_sha256": "def080df0fd3053512809d1decbcb4ac3378a4e9a9d3b557e0750319878dc7bd",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/out_of_fold_predictions.csv",
+      "before_sha256": "1951fd59cb9e8b06b30ab7e529c769740dc6908d7e9037d989e74ec07662581d",
+      "after_sha256": "1951fd59cb9e8b06b30ab7e529c769740dc6908d7e9037d989e74ec07662581d",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/partition_assignments.csv",
+      "before_sha256": "4c4fd9917be13bb6dd8e518f0f8e3f0239049162c6c4feec0da8c8c9e131c410",
+      "after_sha256": "4c4fd9917be13bb6dd8e518f0f8e3f0239049162c6c4feec0da8c8c9e131c410",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/development_descriptive_statistics.csv",
+      "before_sha256": "7e502fa88cc94f3edaf2860ad22fd68c849d97872066ece83030838861dc6337",
+      "after_sha256": "7e502fa88cc94f3edaf2860ad22fd68c849d97872066ece83030838861dc6337",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/inner_cv_results.csv",
+      "before_sha256": "b900f285e478251ebb80a052bb7993c6822785f342fa610c015a7b0bc59058c5",
+      "after_sha256": "b900f285e478251ebb80a052bb7993c6822785f342fa610c015a7b0bc59058c5",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/outer_fold_assignments.csv",
+      "before_sha256": "4e320cfc6c9337846186c5d98ae9e8ae667003a47f50b30ac966c9f2d79787e5",
+      "after_sha256": "4e320cfc6c9337846186c5d98ae9e8ae667003a47f50b30ac966c9f2d79787e5",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/tables/interval_coverage_by_price.csv",
+      "before_sha256": "fdef256cc12f96e1f1d3e803eb7fd53e3802f010c1143d16d48b35fb5457987e",
+      "after_sha256": "fdef256cc12f96e1f1d3e803eb7fd53e3802f010c1143d16d48b35fb5457987e",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M5.joblib",
+      "before_sha256": "4cd1e32b273814daf21918251c76b878b422360e5acf8d140063feb2a1cfda57",
+      "after_sha256": "4cd1e32b273814daf21918251c76b878b422360e5acf8d140063feb2a1cfda57",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M1.joblib",
+      "before_sha256": "2bfda7c6cd9237105c658597098de37cbd91c64c593cacae15274135854d153c",
+      "after_sha256": "2bfda7c6cd9237105c658597098de37cbd91c64c593cacae15274135854d153c",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M3.joblib",
+      "before_sha256": "f6acdc4c096606dcd7c2cfddc936de9d578cbff1a61cf607e6130f81642b4e7c",
+      "after_sha256": "f6acdc4c096606dcd7c2cfddc936de9d578cbff1a61cf607e6130f81642b4e7c",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M4.joblib",
+      "before_sha256": "9d77c37b100b63aba9a2496f0dcf00a7480d10c57045f028cb7d97ad8b011064",
+      "after_sha256": "9d77c37b100b63aba9a2496f0dcf00a7480d10c57045f028cb7d97ad8b011064",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M0.joblib",
+      "before_sha256": "2897cd9f740c7cdf2f3f91a4eefa46590e74f9e17b63acae68e56b7384fd829a",
+      "after_sha256": "2897cd9f740c7cdf2f3f91a4eefa46590e74f9e17b63acae68e56b7384fd829a",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/final_model.joblib",
+      "before_sha256": "f6acdc4c096606dcd7c2cfddc936de9d578cbff1a61cf607e6130f81642b4e7c",
+      "after_sha256": "f6acdc4c096606dcd7c2cfddc936de9d578cbff1a61cf607e6130f81642b4e7c",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/models/M2.joblib",
+      "before_sha256": "72e4759a67861874631df36290f006a81f59ae53ec14c1d09ef4ba168070fcbd",
+      "after_sha256": "72e4759a67861874631df36290f006a81f59ae53ec14c1d09ef4ba168070fcbd",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/06_cv_rmse_comparison.png",
+      "before_sha256": "c33e14a9e05eb1ceee0460533cd47b48d8d534878e6c7b23efd4fb65138a2b77",
+      "after_sha256": "c33e14a9e05eb1ceee0460533cd47b48d8d534878e6c7b23efd4fb65138a2b77",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/04_living_area_vs_price.png",
+      "before_sha256": "4781a142b25128a49c71edfcfcd619b9f7fa78b5d7b56d2e34b0db0aecd3f2f7",
+      "after_sha256": "4781a142b25128a49c71edfcfcd619b9f7fa78b5d7b56d2e34b0db0aecd3f2f7",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/12_residuals_vs_fitted.png",
+      "before_sha256": "c8312bd0088c9b24b8c1cff094b1a2f39a858760ce7048e67cf41caaf8d8983a",
+      "after_sha256": "c8312bd0088c9b24b8c1cff094b1a2f39a858760ce7048e67cf41caaf8d8983a",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/09_rfecv_performance.png",
+      "before_sha256": "7157ad8bd8664ea1d1cade339bdebc470ed620652406ad814cce0204bc50d6c0",
+      "after_sha256": "7157ad8bd8664ea1d1cade339bdebc470ed620652406ad814cce0204bc50d6c0",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/10_lasso_coefficients.png",
+      "before_sha256": "accdde0888278653059bf8c1e45dc5db010997871c3b3035fce6bfd7826ddde3",
+      "after_sha256": "accdde0888278653059bf8c1e45dc5db010997871c3b3035fce6bfd7826ddde3",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/17_residual_histogram.png",
+      "before_sha256": "71ecd3602e07dc7ee161691ed11c87fa28f8049c4492bc8711b3d2bab2345cba",
+      "after_sha256": "71ecd3602e07dc7ee161691ed11c87fa28f8049c4492bc8711b3d2bab2345cba",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/05_feature_selection_comparison.png",
+      "before_sha256": "e8557d99ce4c3f76587712ba860f13fc4803e0eab15d0aab8351295f25f94ed6",
+      "after_sha256": "e8557d99ce4c3f76587712ba860f13fc4803e0eab15d0aab8351295f25f94ed6",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/07_cv_r2_comparison.png",
+      "before_sha256": "8969d704dfde12040ae6ba135a55506295d7f832eaa2a818150e2b4d758150f0",
+      "after_sha256": "8969d704dfde12040ae6ba135a55506295d7f832eaa2a818150e2b4d758150f0",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/08_feature_count_comparison.png",
+      "before_sha256": "4919a0b119f1ddfa64df0daa0c2bc7d0abd9e8cdcc3858d7d6a9215a6903b5a0",
+      "after_sha256": "4919a0b119f1ddfa64df0daa0c2bc7d0abd9e8cdcc3858d7d6a9215a6903b5a0",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/03_feature_correlation_heatmap.png",
+      "before_sha256": "2e6cb4786938987586d3f45b61bf4b1196d3706e255620366bf0bbf47ed60c65",
+      "after_sha256": "2e6cb4786938987586d3f45b61bf4b1196d3706e255620366bf0bbf47ed60c65",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/16_feature_distributions.png",
+      "before_sha256": "fe11dafa4344a352e6102ac7cdf45dbbf67a8fb404e9a3b24806525db03ccca5",
+      "after_sha256": "fe11dafa4344a352e6102ac7cdf45dbbf67a8fb404e9a3b24806525db03ccca5",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/15_interval_coverage_by_price.png",
+      "before_sha256": "fb0698f42cb036d4e549e7d151a7ca4d5bdfd3642d944d0a37f99cb5c81e0b23",
+      "after_sha256": "fb0698f42cb036d4e549e7d151a7ca4d5bdfd3642d944d0a37f99cb5c81e0b23",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/11_actual_vs_predicted.png",
+      "before_sha256": "58c9a8ef3ea255063d5c6404184a5502df9f1dd7556ca6d40f797f348220f399",
+      "after_sha256": "58c9a8ef3ea255063d5c6404184a5502df9f1dd7556ca6d40f797f348220f399",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/14_prediction_interval_95.png",
+      "before_sha256": "9d80f6d24eafbca48f4fbea584ba76da28751a68584d9319674e4eb74e11f198",
+      "after_sha256": "9d80f6d24eafbca48f4fbea584ba76da28751a68584d9319674e4eb74e11f198",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/13_residual_qq_plot.png",
+      "before_sha256": "bf463a70f39d53b8eb404c76142072924cef3dc0b0c683845c346d91f76de5ae",
+      "after_sha256": "bf463a70f39d53b8eb404c76142072924cef3dc0b0c683845c346d91f76de5ae",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/01_target_distribution.png",
+      "before_sha256": "a3400db4abdd38e9b0c373b92cd90c4d6c77962ca9378e6c92e2f65d9f40f2ec",
+      "after_sha256": "a3400db4abdd38e9b0c373b92cd90c4d6c77962ca9378e6c92e2f65d9f40f2ec",
+      "unchanged": true
+    },
+    {
+      "path": "outputs_verified/figures/02_price_boxplot.png",
+      "before_sha256": "11e92539577b5da9fa595dfd51f06db398c9e8d7b36479d266b48d8d67654b7b",
+      "after_sha256": "11e92539577b5da9fa595dfd51f06db398c9e8d7b36479d266b48d8d67654b7b",
+      "unchanged": true
+    },
+    {
+      "path": "data/kc_house_data.csv",
+      "before_sha256": "d0875baa0251b21d4bdc9d2ae940a4fe0bb6009824f23dd0e2a5b2bf04557b7e",
+      "after_sha256": "d0875baa0251b21d4bdc9d2ae940a4fe0bb6009824f23dd0e2a5b2bf04557b7e",
+      "unchanged": true
+    },
+    {
+      "path": "experiment.py",
+      "before_sha256": "5f11535c5623172055a3dab1355e436befbbf5e22400af1aadad596c61ceb33e",
+      "after_sha256": "5f11535c5623172055a3dab1355e436befbbf5e22400af1aadad596c61ceb33e",
+      "unchanged": true
+    },
+    {
+      "path": "7115056123_hw2.py",
+      "before_sha256": "c1b366057a92d6d510fbf5ef759331de211e8aa330fce1454752c59758560bfb",
+      "after_sha256": "c1b366057a92d6d510fbf5ef759331de211e8aa330fce1454752c59758560bfb",
+      "unchanged": true
+    }
+  ]
+}

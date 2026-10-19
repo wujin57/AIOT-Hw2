@@ -205,10 +205,11 @@ Selection frequency across five methods (descriptive association, no causal inte
 
 Selection was frozen before Test metrics. The one-standard-error rule is a practical heuristic, not proof of equivalence.
 Primary model: M3. Full standardized coefficients and intercept are in `model_coefficients.csv`.
-Largest absolute coefficients (including any intercept):
+Intercept (separate from feature coefficients): approximately USD 540,030, the baseline prediction at zero in the standardized feature coordinates. It is not a feature-importance score.
+
+Largest absolute fitted feature coefficients (descriptive solver output, not a uniquely identified importance ranking):
 | encoded_feature    |   coefficient_usd_per_scaled_unit |
 |:-------------------|----------------------------------:|
-| intercept          |                          540030   |
 | num__sqft_above    |                           92658   |
 | num__sqft_living   |                           90867   |
 | zip__zipcode_98004 |                           81829.9 |
@@ -224,6 +225,7 @@ Largest absolute coefficients (including any intercept):
 ## G. Statistical Diagnostics
 Development training residuals are descriptive post-selection diagnostics.
 Effective predictor rank: 59; augmented rank 60 of 61.
+The selected design is rank-deficient. Individual OLS coefficients may not be uniquely identifiable: different coefficient vectors can give the same fitted values on this design. Do not interpret this table as unique feature importance or causal effects; the intercept is reported separately above.
 Residual skew: 4.40264; excess kurtosis: 74.8482.
 BP/Koenker LM: 1943.89, df=59, p=0.
 P-value representation: Numerical underflow: stored 0.0 means below floating-point resolution, not an exactly zero probability.
@@ -347,3 +349,36 @@ CSV tables, figures, source and saved models:
 - How does coverage change across the fixed predicted-price bins?
 - Does within-property dependence limit the conformal interpretation?
 - Which results require additional methodological authorization before rerunning?
+
+
+## L. Stage 4 targeted corrections and executed verification
+
+This addendum supersedes ambiguous interpretations above; the original numerical results and execution provenance remain unchanged.
+
+### Accuracy versus complexity
+
+M0 has the lowest outer-CV mean RMSE (USD 165,873.34). M3 has mean RMSE USD 166,319.69 and higher RMSE in **all five** outer folds. M3 minus M0 fold RMSE differences are approximately USD 595.80, 366.72, 336.34, 365.40 and 567.50, respectively. M3 was selected by the predefined one-standard-error complexity rule, not by better predictive accuracy. This heuristic does not establish statistical equivalence.
+
+The reduction from 86 to 60 is **30.23% of encoded model columns**, not 30.23% of the original 18 predictors. Pearson (M1), MI (M2) and RFE (M3) searched only `[5, 10, 20, 40, 60]` encoded columns; no conclusions about their optimum above 60 are supported by this experiment.
+
+### Identifiability and coverage
+
+The selected augmented design has rank 60 out of 61 columns. Individual OLS coefficients need not be uniquely identifiable, even where fitted predictions are reproducible. The intercept is a baseline prediction in standardized coordinates and has been removed from the feature-coefficient ranking in section F. The original coefficient CSV is unchanged.
+
+Highest predicted-price-group empirical coverage is 755/949, approximately **79.56%**, versus overall coverage approximately 94.36%. Basic split conformal has a marginal coverage interpretation under appropriate exchangeability assumptions; it does not guarantee conditional coverage within every price group. Group-disjoint splitting alone does not establish transaction-level exchangeability. These Test findings did not change the frozen winner, calibration threshold or predictions.
+
+### Exact changes and evidence
+
+- `validate_outputs.py`: default dataset now resolves to `data/kc_house_data.csv` relative to the script/repository, with an explicit `--data` override. SHA256 is checked before saved-model loading and prediction checks. The historical `dataset_path` in research configuration is retained without modification.
+- `tests/test_validation_portability.py`: two subprocess tests copy the validator, implementation, actual dataset and verified artifacts to another directory (including spaces), run from a different working directory, and prohibit reading the original absolute dataset path. They cover the repository default and an alternate `--data` location with the default CSV absent. A third test rejects a modified-checksum CSV before any model is loaded. Relocated verified files and historical configuration are checked for byte equality before/after validation.
+- `README.md`: portable validation instructions and explicit distinctions among accuracy, complexity, identifiability and marginal/conditional coverage.
+- `outputs_verified/handoff.md`: documentation-only corrections to section F/G and this addendum. No numerical table, model, figure, configuration, split, prediction or interval artifact was regenerated.
+- `verification/stage4/tests.txt`: **16 passed, 0 failed** (13 existing tests plus 3 new cases); 14 retained third-party Matplotlib/pyparsing deprecation warnings.
+- `verification/stage4/validation.txt`: existing verified-artifact validation passed, including model metrics, conformal arithmetic, saved final-model and six-model prediction comparisons; frozen winner remains M3.
+- `verification/stage4/tests_initial.txt`: retained initial test-run failure log. The two new relocation tests initially passed a duplicate script argument in the subprocess test harness; that harness was corrected before the successful full test run. No experiment failure or numerical change resulted.
+- `verification/stage4/artifact_integrity.json`: before/after SHA256 evidence for all 69 baseline files (66 pre-existing verified files plus dataset, experiment implementation and entry point). Only this handoff document is allowed to differ; all other 68 files remain byte-identical, which is stronger than numerical equality.
+- `7115056123_hw2.zip`: refreshed solely to include the corrected code, documentation and verification evidence. Archived frozen files are checked against the same baseline hashes.
+
+Verified dataset SHA256: `d0875baa0251b21d4bdc9d2ae940a4fe0bb6009824f23dd0e2a5b2bf04557b7e`.
+
+Naming remains `7115056123_hw2.py` and `7115056123_hw2.zip`. No full-data training, tuning, model selection or calibration was rerun. Existing engineering unit tests fit only their synthetic fixtures; saved-result validation only recomputes comparisons from frozen predictions/models.

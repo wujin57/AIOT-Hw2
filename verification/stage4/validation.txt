@@ -1,0 +1,3 @@
+PASS: dataset SHA256 d0875baa0251b21d4bdc9d2ae940a4fe0bb6009824f23dd0e2a5b2bf04557b7e
+PASS: 21,613 rows; group isolation; inner/outer audit; 30 fold scores; CV mean/SD; six OLS models; feature counts; Test metrics; conformal rank and coverage; saved-model predictions; 17 figures.
+Winner: M3
