@@ -1,0 +1,46 @@
+Outer 1/5 M0
+Outer 1/5 M1
+Outer 1/5 M2
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+  File "/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+Outer 1/5 M3
+Outer 1/5 M4
+Outer 1/5 M5
+Outer 2/5 M0
+Outer 2/5 M1
+Outer 2/5 M2
+Outer 2/5 M3
+Outer 2/5 M4
+Outer 2/5 M5
+Outer 3/5 M0
+Outer 3/5 M1
+Outer 3/5 M2
+Outer 3/5 M3
+Outer 3/5 M4
+Outer 3/5 M5
+Outer 4/5 M0
+Outer 4/5 M1
+Outer 4/5 M2
+Outer 4/5 M3
+Outer 4/5 M4
+Outer 4/5 M5
+Outer 5/5 M0
+Outer 5/5 M1
+Outer 5/5 M2
+Outer 5/5 M3
+Outer 5/5 M4
+Outer 5/5 M5
+Frozen selection: {'best_rmse_method': 'M0', 'threshold': np.float64(170352.3781155815), 'eligible_methods': ['M3', 'M4', 'M5', 'M0'], 'selected_method': 'M3', 'policy': 'one SE; fewest mean selected encoded columns, then RMSE, then M0..M5', 'selected_mean_count': np.float64(60.0), 'frozen_before_test': True}
+Development refit M0
+Development refit M1
+Development refit M2
+Development refit M3
+Development refit M4
+Development refit M5
+Completed in 240.8s; winner=M3

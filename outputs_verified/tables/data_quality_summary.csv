@@ -1,0 +1,14 @@
+measure,value
+rows,21613
+columns,21
+original_predictors,18
+unique_properties,21436
+repeated_id_rows,177
+properties_with_repeated_ids,176
+duplicate_rows,0
+missing_values,0
+area_identity_rows,21613
+area_identity_discrepancies,0
+date_min,2014-05-02 00:00:00
+date_max,2015-05-27 00:00:00
+development_target_skew,4.09485493856273

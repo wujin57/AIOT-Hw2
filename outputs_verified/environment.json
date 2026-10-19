@@ -1,0 +1,8 @@
+{
+  "platform": "macOS-14.2.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "logical_cpu_count": 8,
+  "blas_threads": 1,
+  "dependency_check": "pip check passed",
+  "notes": "CPU-only execution; no changes to prescribed sample size or CV folds"
+}

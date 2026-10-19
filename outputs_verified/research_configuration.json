@@ -1,0 +1,109 @@
+{
+  "objective": "Predict historical residential sale prices and compare feature selection for multiple linear regression.",
+  "research_questions": [
+    "RQ1: accuracy improvement?",
+    "RQ2: complexity reduction with retained performance?",
+    "RQ3: reasonable calibrated 95% prediction intervals?"
+  ],
+  "dataset_source": "https://www.kaggle.com/datasets/harlfoxem/housesalesprediction",
+  "dataset_path": "/Users/wujinsong/Desktop/AiOt/hw2/data/kc_house_data.csv",
+  "dataset_sha256": "d0875baa0251b21d4bdc9d2ae940a4fe0bb6009824f23dd0e2a5b2bf04557b7e",
+  "shape": [
+    21613,
+    21
+  ],
+  "features": [
+    "bedrooms",
+    "bathrooms",
+    "sqft_living",
+    "sqft_lot",
+    "floors",
+    "waterfront",
+    "view",
+    "condition",
+    "grade",
+    "sqft_above",
+    "sqft_basement",
+    "yr_built",
+    "yr_renovated",
+    "zipcode",
+    "lat",
+    "long",
+    "sqft_living15",
+    "sqft_lot15"
+  ],
+  "seed": 42,
+  "split": "GroupShuffleSplit 20% then 18.75% of remaining groups",
+  "outer_cv": "GroupKFold(5), shared assignments",
+  "inner_cv": "GroupKFold(3), fold-local preprocessing and selection",
+  "models": {
+    "M0": "All",
+    "M1": "Pearson",
+    "M2": "Mutual Information",
+    "M3": "RFE",
+    "M4": "RFECV equivalent fold-local recursive elimination",
+    "M5": "LASSO selection + OLS"
+  },
+  "count_grid": [
+    5,
+    10,
+    20,
+    40,
+    60
+  ],
+  "lasso_alpha_grid": [
+    1.0,
+    3.1622776601683795,
+    10.0,
+    31.622776601683793,
+    100.0,
+    316.22776601683796,
+    1000.0,
+    3162.2776601683795,
+    10000.0,
+    31622.776601683792,
+    100000.0
+  ],
+  "lasso_threshold": 1e-08,
+  "lasso_max_iter": 1000000,
+  "lasso_tol": 1e-05,
+  "lasso_precompute": true,
+  "rfecv_step": 5,
+  "rfecv_min_features": 1,
+  "scoring": "mean fold RMSE in original USD",
+  "discrete_MI_predictors": [
+    "bedrooms",
+    "condition",
+    "floors",
+    "grade",
+    "view",
+    "waterfront",
+    "yr_built",
+    "yr_renovated",
+    "zipcode dummies"
+  ],
+  "continuous_MI_predictors": [
+    "bathrooms",
+    "sqft_living",
+    "sqft_lot",
+    "sqft_above",
+    "sqft_basement",
+    "lat",
+    "long",
+    "sqft_living15",
+    "sqft_lot15"
+  ],
+  "assumptions": "ZIP reference-category one-hot; other numeric/ordinal variables unchanged. Impute within folds; scale every encoded column. No row removal or engineered features.",
+  "selection": "best mean outer RMSE + its sample SD / sqrt(5), then smallest mean column count, RMSE, fixed method order",
+  "conformal_alpha": 0.05,
+  "python": "3.9.6",
+  "versions": {
+    "numpy": "2.0.2",
+    "pandas": "2.3.3",
+    "sklearn": "1.6.1",
+    "scipy": "1.13.1",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.9.4"
+  },
+  "timestamp_utc": "2026-10-19T07:55:52.470696+00:00"
+}

@@ -1,0 +1,2 @@
+nominal_coverage,empirical_coverage,average_width,q_hat,calibration_n,order_k,test_n,covered,uncovered,negative_lower_bounds
+0.95,0.9435707678075855,518421.98977756104,259210.99488878052,3236,3076,4324,4080,244,727

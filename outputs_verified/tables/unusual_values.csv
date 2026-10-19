@@ -1,0 +1,7 @@
+check,count
+bedrooms_zero,13
+bedrooms_over_10,2
+bathrooms_zero,10
+living_area_nonpositive,0
+renovation_zero_meaningful,20699
+basement_zero_meaningful,13126

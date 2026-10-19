@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.zip
+.DS_Store
+outputs/
+.env
+.env.*
+!.env.example

@@ -1,0 +1,4 @@
+partition,rows,groups,proportion,overlap_with_other_partitions
+Development,14053,13932,0.6502105214454263,0
+Calibration,3236,3216,0.14972470272521168,0
+Test,4324,4288,0.20006477582936197,0

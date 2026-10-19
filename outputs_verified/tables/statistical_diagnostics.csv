@@ -1,0 +1,16 @@
+measure,value
+partition,"Development training residuals, descriptive post-selection diagnostics"
+design_columns_with_intercept,61
+design_rank_with_intercept,60
+effective_predictor_rank,59
+condition_number,2377587284849979.0
+residual_mean,3.578696294686959e-11
+residual_sd,164041.797190761
+residual_skew,4.402641114023453
+residual_excess_kurtosis,74.84820756022177
+bp_lm,1943.8881687379471
+bp_df,59
+bp_pvalue,0.0
+max_absolute_residual,4365821.680076486
+bp_method,Koenker/Breusch-Pagan n*R2 on squared residual auxiliary regression over full design column space; df=rank-1
+bp_pvalue_note,"Numerical underflow: stored 0.0 means below floating-point resolution, not an exactly zero probability"

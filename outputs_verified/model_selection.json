@@ -1,0 +1,14 @@
+{
+  "best_rmse_method": "M0",
+  "threshold": 170352.3781155815,
+  "eligible_methods": [
+    "M3",
+    "M4",
+    "M5",
+    "M0"
+  ],
+  "selected_method": "M3",
+  "policy": "one SE; fewest mean selected encoded columns, then RMSE, then M0..M5",
+  "selected_mean_count": 60.0,
+  "frozen_before_test": true
+}

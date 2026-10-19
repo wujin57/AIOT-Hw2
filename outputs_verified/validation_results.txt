@@ -1,0 +1,2 @@
+PASS: 21,613 rows; group isolation; inner/outer audit; 30 fold scores; CV mean/SD; six OLS models; feature counts; Test metrics; conformal rank and coverage; saved-model predictions; 17 figures.
+Winner: M3
