@@ -1,0 +1,27 @@
+PASS
+PASS 25956 predictions (full Test + missing/unseen ZIP cases); maximum absolute USD error 3.259629011154175e-9
+Dashboard loads without error
+Model switch M0
+Scenario prediction M0
+Six comparison rows M0
+Model switch M1
+Scenario prediction M1
+Six comparison rows M1
+Model switch M2
+Scenario prediction M2
+Six comparison rows M2
+Model switch M3
+Scenario prediction M3
+Six comparison rows M3
+Model switch M4
+Scenario prediction M4
+Six comparison rows M4
+Model switch M5
+Scenario prediction M5
+Six comparison rows M5
+Changed scenario loses known-actual label
+Living-area identity maintained
+Empty input rejected
+Reset restores sample
+Feature search filters
+Mobile 390px has no page overflow

@@ -1,0 +1,14 @@
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/Users/wujinsong/Desktop/AiOt/hw2/.venv/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:246: UserWarning: Found unknown categories in columns [0] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+PASS: all published metrics, selection, 17 figures and 10 downloads match saved artifacts; local HTML links resolve.
+Prepared 4,324 Test rows x 6 models plus 2 preprocessing edge cases for browser inference parity.

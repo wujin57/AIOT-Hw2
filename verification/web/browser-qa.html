@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><title>HW2 browser verification</title><script src="../../dashboard/predict.js"></script></head><body><h1>HW2 browser verification</h1><pre id="report">RUNNING</pre><iframe id="app" src="../../dashboard/" width="1280" height="900" title="Dashboard test"></iframe><script>
+(async()=>{
+ const report=document.getElementById('report'); const frame=document.getElementById('app'); const checks=[];
+ const assert=(condition,message)=>{if(!condition)throw new Error(message);checks.push(message);};
+ try {
+  const [data,fixtures]=await Promise.all(['../../dashboard/data/results.json','parity-fixtures.json'].map(u=>fetch(u).then(r=>r.json())));
+  let count=0,maxError=0;
+  for(const row of [...fixtures.test,...fixtures.edge]) for(const [id,expected] of Object.entries(row.expected)){
+   const actual=HW2.predict(data.models[id],row.features); const err=Math.abs(actual-expected); if(!Number.isFinite(actual)||err>1e-6)throw new Error(`Parity failed ${id}: ${err}`);maxError=Math.max(maxError,err);count++;
+  }
+  checks.push(`PASS ${count} predictions (full Test + missing/unseen ZIP cases); maximum absolute USD error ${maxError}`);
+  for(let i=0;i<100;i++){if(frame.contentDocument?.getElementById('results')?.hidden===false)break;await new Promise(r=>setTimeout(r,50));}
+  const doc=frame.contentDocument;
+  assert(doc.getElementById('results').hidden===false,'Dashboard loads without error');
+  for(const id of Object.keys(data.models)){
+   doc.querySelector(`[data-method="${id}"]`).click();
+   assert(doc.getElementById('active-label').textContent.startsWith(id),`Model switch ${id}`);
+   const expected=data.samples[0].predictions[id];
+   const displayed=Number(doc.getElementById('prediction-value').textContent.replace(/[^0-9.-]/g,''));
+   assert(Math.abs(displayed-expected)<=.5,`Scenario prediction ${id}`);
+   assert(doc.querySelectorAll('#comparison-body tr').length===6,`Six comparison rows ${id}`);
+  }
+  doc.querySelector('[data-method="M3"]').click();
+  const above=doc.querySelector('[name="sqft_above"]'); const prior=above.value;above.value=Number(prior)+100;above.dispatchEvent(new Event('input',{bubbles:true}));
+  assert(doc.getElementById('sample-actual').textContent.includes('自訂情境'),'Changed scenario loses known-actual label');
+  assert(Number(doc.querySelector('[name="sqft_living"]').value)===Number(above.value)+Number(doc.querySelector('[name="sqft_basement"]').value),'Living-area identity maintained');
+  above.value='';above.dispatchEvent(new Event('input',{bubbles:true}));
+  assert(doc.getElementById('prediction-value').textContent.includes('請檢查'),'Empty input rejected');
+  doc.getElementById('reset-sample').click();
+  assert(doc.getElementById('sample-actual').textContent.includes('實際成交價'),'Reset restores sample');
+  const search=doc.getElementById('feature-search');search.value='zipcode_98004';search.dispatchEvent(new Event('input',{bubbles:true}));
+  assert(doc.querySelectorAll('#feature-body tr').length===1,'Feature search filters');
+  search.value='';search.dispatchEvent(new Event('input',{bubbles:true}));
+  frame.width='390';await new Promise(r=>setTimeout(r,100));
+  assert(doc.documentElement.scrollWidth<=doc.documentElement.clientWidth+1,'Mobile 390px has no page overflow');
+  report.textContent='PASS\n'+checks.join('\n');document.title='PASS — HW2 browser verification';
+ }catch(error){report.textContent='FAIL\n'+error.stack;document.title='FAIL — HW2 browser verification';}
+})();
+</script></body></html>

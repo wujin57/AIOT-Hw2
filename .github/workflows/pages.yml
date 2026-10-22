@@ -1,0 +1,38 @@
+name: Deploy King County regression dashboard
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dashboard/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check static dashboard files
+        run: |
+          test -s dashboard/index.html
+          test -s dashboard/styles.css
+          test -s dashboard/vendor/chart.umd.min.js
+          node --check dashboard/app.js
+          node --check dashboard/predict.js
+          python -m json.tool dashboard/data/results.json > /dev/null
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dashboard
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

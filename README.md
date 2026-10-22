@@ -1,5 +1,20 @@
 # Machine Learning HW2：King County 多元線性迴歸
 
+## 線上互動展示
+
+[開啟 King County Regression Explorer →](https://wujin57.github.io/AIOT-Hw2/)
+
+![HW2 儀表板](docs/images/dashboard-desktop.png)
+
+沿用 fifty startup 的紫色靜態儀表板風格：六模型切換、CV/Test 比較、編碼欄位搜尋、房價情境試算、M3 conformal 區間、研究圖表與結果下載。瀏覽器使用保存模型的補值、ZIP 編碼、標準化與 OLS 係數進行試算，不重新訓練；所有歷史評估結果與最終 M3 選擇保持凍結。
+
+- 網頁原始碼：`dashboard/`，以 GitHub Pages 部署；Chart.js 隨專案提供，不依賴外部 CDN。
+- 匯出展示資料：`.venv/bin/python scripts/export_dashboard.py`，只讀取既有模型與結果，不呼叫模型擬合。
+- 核對匯出：`.venv/bin/python scripts/verify_dashboard.py`。
+- 本機預覽：在儲存庫根目錄執行 `.venv/bin/python -m http.server 8765`，開啟 `http://localhost:8765/dashboard/`。
+- 瀏覽器測試：匯出與核對後，開啟 `http://localhost:8765/verification/web/browser-qa.html`。全 Test 資料 × 六模型，以及缺值／未知 ZIP 測試，皆與 Python 保存預測核對。
+- Web 驗證紀錄：`verification/web/README.md`。網站是本次另行授權的展示功能，不改變原始研究規格或數值產物。
+
 依 `IMPLEMENTATION_PROMPT.md` 實作 CRISP-DM 研究流程。使用官方 Kaggle King County 資料，六種配置皆以 `LinearRegression` 作最終預測；不包含正式學術 PDF。
 
 ## ChatGPT Stage 4 審查入口
